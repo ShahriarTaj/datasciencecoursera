@@ -1,15 +1,15 @@
 package com.taj.shah.app;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 public class RestfulProcessor {
@@ -18,17 +18,19 @@ public class RestfulProcessor {
 	public String createTables() {
 		StringBuilder sb = new StringBuilder();
 
-		Connection conn;
-		try {
-			System.out.println("trying to connect");
-			conn = getConnection();
-			conn.close();
-			sb.append("YEAH");
-		} catch (Exception e) {
-			e.printStackTrace();
-			sb.append(e.getMessage());
-		}
+//		Connection conn;
+//		try {
+//			System.out.println("trying to connect");
+//			conn = getConnection();
+//			conn.close();
+//			sb.append("YEAH");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			sb.append(e.getMessage());
+//		}
 
+		sb.append("The time is: " + new Date(System.currentTimeMillis()).toString());
+		
 		return sb.toString();
 	}
 
@@ -40,7 +42,7 @@ public class RestfulProcessor {
 		String username = "shah";
 		String password = "test";
 		String driver = "org.mariadb.jdbc.Driver";
-		String url = String.format("jdbc:mariadb://%s:3306/DB?user=%s&password=%s", host, username, password);
+		String url = String.format("jdbc:mariadb://%s:3306/mariadb?user=%s&password=%s", host, username, password);
 		System.out.println(url);
 		Class.forName(driver);
 		connection = DriverManager.getConnection(url);
