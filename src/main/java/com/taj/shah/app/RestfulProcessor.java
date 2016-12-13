@@ -18,16 +18,16 @@ public class RestfulProcessor {
 	public String createTables() {
 		StringBuilder sb = new StringBuilder();
 
-//		Connection conn;
-//		try {
-//			System.out.println("trying to connect");
-//			conn = getConnection();
-//			conn.close();
-//			sb.append("YEAH");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			sb.append(e.getMessage());
-//		}
+		Connection conn;
+		try {
+			System.out.println("trying to connect");
+			conn = getConnection();
+			conn.close();
+			sb.append("YEAH");
+		} catch (Exception e) {
+			e.printStackTrace();
+			sb.append(e.getMessage());
+		}
 
 		sb.append("The time is: " + new Date(System.currentTimeMillis()).toString());
 		
@@ -38,11 +38,11 @@ public class RestfulProcessor {
 		Connection connection;
 
 		
-		String host = "mariadb-app-with-persistence.44fs.preview.openshiftapps.com";
+		String host = "172.30.35.199";
 		String username = "shah";
 		String password = "test";
 		String driver = "org.mariadb.jdbc.Driver";
-		String url = String.format("jdbc:mariadb://%s:3306/mariadb?user=%s&password=%s", host, username, password);
+		String url = String.format("jdbc:mariadb://%s:3306/DB?user=%s&password=%s", host, username, password);
 		System.out.println(url);
 		Class.forName(driver);
 		connection = DriverManager.getConnection(url);
