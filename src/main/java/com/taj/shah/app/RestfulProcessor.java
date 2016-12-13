@@ -45,7 +45,7 @@ public class RestfulProcessor {
 		String username = "shah";
 		String password = "test";
 		String driver = "org.mariadb.jdbc.Driver";
-		String url = String.format("jdbc:mariadb://%s:3306/sampledb?user=%s&password=%s", host, username, password);
+		String url = String.format("jdbc:mariadb://%s:3306?user=%s&password=%s", host, username, password);
 		logger.info(url);
 		Class.forName(driver);
 		connection = DriverManager.getConnection(url);
