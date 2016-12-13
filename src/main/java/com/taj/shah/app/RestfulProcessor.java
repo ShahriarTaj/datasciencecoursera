@@ -23,7 +23,7 @@ public class RestfulProcessor {
 
 		Connection conn;
 		try {
-			System.out.println("trying to connect");
+			logger.info("trying to connect");
 			conn = getConnection();
 			conn.close();
 			sb.append("YEAH");
@@ -45,8 +45,8 @@ public class RestfulProcessor {
 		String username = "shah";
 		String password = "test";
 		String driver = "org.mariadb.jdbc.Driver";
-		String url = String.format("jdbc:mariadb://%s:3306/DB?user=%s&password=%s", host, username, password);
-		System.out.println(url);
+		String url = String.format("jdbc:mariadb://%s:3306/sampledb?user=%s&password=%s", host, username, password);
+		logger.info(url);
 		Class.forName(driver);
 		connection = DriverManager.getConnection(url);
 
