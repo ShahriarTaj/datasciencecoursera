@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestfulProcessor {
 
+	Logger logger = Logger.getLogger(this.getClass());
+	
 	@RequestMapping("/createTables")
 	public String createTables() {
 		StringBuilder sb = new StringBuilder();
@@ -47,7 +50,7 @@ public class RestfulProcessor {
 		Class.forName(driver);
 		connection = DriverManager.getConnection(url);
 
-		System.out.println(
+		logger.info(
 				"host: " + host + "\\username: " + username + "\\password: " + password + "\\driver: " + driver);
 
 		System.out.println("--------------------------");
