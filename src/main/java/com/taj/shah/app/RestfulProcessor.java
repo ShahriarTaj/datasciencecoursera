@@ -43,7 +43,7 @@ public class RestfulProcessor {
 		Class.forName(driver);
 
 		               
-		String host = System.getenv("MYSQL_SERVICE_HOST");
+		String host = System.getenv("MARIADB_SERVICE_HOST");
 		String username = System.getenv("MYSQL_USER");
 		String password = System.getenv("MYSQL_PASSWORD");
 		String db = System.getenv("MYSQL_DATABASE");
