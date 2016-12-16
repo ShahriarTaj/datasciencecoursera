@@ -39,7 +39,7 @@ public class RestfulProcessor {
 
 	private Connection getConnection() throws FileNotFoundException, IOException, ClassNotFoundException, SQLException {
 		Connection connection;
-		String driver = "com.mariadb.jdbc.Driver";
+		String driver = "org.mariadb.jdbc.Driver";
 		Class.forName(driver);
 
 		               
