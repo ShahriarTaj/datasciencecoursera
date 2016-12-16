@@ -39,16 +39,15 @@ public class RestfulProcessor {
 
 	private Connection getConnection() throws FileNotFoundException, IOException, ClassNotFoundException, SQLException {
 		Connection connection;
-		String driver = "com.mysql.jdbc.Driver";
+		String driver = "com.mariadb.jdbc.Driver";
 		Class.forName(driver);
 
-		
+		               
 		String host = System.getenv("MYSQL_SERVICE_HOST");
 		String username = System.getenv("MYSQL_USER");
 		String password = System.getenv("MYSQL_PASSWORD");
 		String db = System.getenv("MYSQL_DATABASE");
-		String url = String.format("jdbc:mysql://%s:3306/%s?user=%s&password=%s", host, db, username, password);
-		//String url = "jdbc:mysql://172.30.35.199:3306/sampledb?user=shah&password=test";
+		String url = String.format("jdbc:mariadb://%s:3306/%s?user=%s&password=%s", host, db, username, password);
 		logger.info(url);
 		connection = DriverManager.getConnection(url);
 
