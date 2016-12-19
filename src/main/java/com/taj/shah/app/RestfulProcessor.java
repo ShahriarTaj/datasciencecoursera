@@ -3,7 +3,7 @@ package com.taj.shah.app;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -21,20 +21,36 @@ public class RestfulProcessor {
 	public String createTables() {
 		StringBuilder sb = new StringBuilder();
 
-		Connection conn;
+		Connection conn = null;
 		try {
 			logger.info("trying to connect");
 			conn = getConnection();
-			conn.close();
-			sb.append("YEAH");
 		} catch (Exception e) {
 			e.printStackTrace();
 			sb.append(e.getMessage());
 		}
 
-		sb.append("The time is: " + new Date(System.currentTimeMillis()).toString());
+		if ( conn!= null){
+			
+			createTables(conn);
+			
+			
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		sb.append("The time is: " + new Date(System.currentTimeMillis()).toGMTString());
 		
 		return sb.toString();
+	}
+
+	private void createTables(Connection conn) {
+		String sql = "Create table test (time varch(200) )";
+		
 	}
 
 	private Connection getConnection() throws FileNotFoundException, IOException, ClassNotFoundException, SQLException {
